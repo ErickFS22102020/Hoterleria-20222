@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+body
+{
+	background-color: orange; 
+}
+#contenedorMantenimiento
+{
+	
+	position: relative;
+	top: 150px;
+}
+#contenedorGuardarHabitacion
+{
+	background-color: olive;
+	position: relative;
+	left:200px;
+	width: calc(100vw - 200px)
+}
+#tablaFormulario
+{
+	background-color: white;
+}
+#tablaFormulario td, #tablaFormulario th
+{
+	padding: 10px;
+}
+.caracteristicas
+{
+	display:inline-block;
+	width: 100px;
+}
+#caracteristicas input
+{
+	margin: 5px 0px;
+}
+#camas
+{
+	width: 58px;
+}

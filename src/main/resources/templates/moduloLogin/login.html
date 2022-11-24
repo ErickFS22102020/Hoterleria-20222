@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head th:replace="plantilla :: head"></head>
+    <link rel="stylesheet" href="/css/menu/login.css">
+    <body>
+    	
+		<section class="text-center text-lg-start">
+		  <div class="container py-4">
+		    <div class="row g-0 align-items-center">
+		      <div class="col-lg-6 mb-5 mb-lg-0">
+		        <div class="card cascading-right" style="
+		            background: hsla(0, 0%, 100%, 0.55);
+		            backdrop-filter: blur(30px);
+		            ">
+		          <div class="card-body p-5 shadow-5 text-center">
+		          	<!-- Pills navs -->
+					<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+					  <li class="nav-item" role="presentation">
+					    <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+					      aria-controls="pills-login" aria-selected="true">Login</a>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+					      aria-controls="pills-register" aria-selected="false">Register</a>
+					  </li>
+					</ul>
+					<!-- Pills navs -->
+					
+					<!-- Pills content -->
+					<div class="tab-content">
+					  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+					    <form th:action="@{/login}" method="post">
+					      
+					      <h3 class="text-center">Iniciar Sesion</h3><br>
+					
+					      <!-- Email input -->
+					      <div class="form-outline mb-4">
+					        <input type="text" name="username" class="form-control" id="email"/>
+					        <label class="form-label" for="username">Email</label>
+					      </div>
+					
+					      <!-- Password input -->
+					      <div class="form-outline mb-4">
+					        <input type="password" name="password" class="form-control" id="password"/>
+					        <label class="form-label" for="password">Password</label>
+					      </div>
+						  <br>
+					      <!-- Submit button -->
+					      <button type="submit" class="btn btn-primary btn-block mb-4" id="iniciar">Iniciar</button> 
+
+					    </form>
+					  </div>
+					  <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+					    <form th:action="@{/registrarse}" method="post" th:object="${usuario}">
+					      
+					
+					      <h3 class="text-center">Registrate</h3>
+					
+						  <div class="row">
+						  
+						    <!-- Nombre -->
+			                <div class="col-md-6 mb-4">
+			                  <div class="form-outline">
+			                    <input type="text" id="form3Example1" class="form-control" th:field="*{nombre}"/>
+			                    <label class="form-label" for="form3Example1">Nombre</label>
+			                  </div>
+			                </div>
+			                
+			                <!-- Pais -->
+			                <div class="col-md-6 mb-4">
+			                  <div class="form-outline">
+			                    <select class="form-select" aria-label="Default select example" th:field="*{idPais}">
+								  <option th:each="pais : ${listaPaises}" th:value="${pais.idPais}" th:text="${pais.nombrePais}"></option>
+								</select>
+			                  </div>
+			                </div>
+			                
+			              </div>
+			              
+			              <div class="row">
+			              
+			              <!-- Apellido Paterno -->
+			                <div class="col-md-6 mb-4">
+			                  <div class="form-outline">
+			                    <input type="text" id="form3Example2" class="form-control" th:field="*{apellidoPadre}" />
+			                    <label class="form-label" for="form3Example2">Apellido Paterno</label>
+			                  </div>
+			                </div>
+			                
+			              <!-- Apellido Materno -->
+			                <div class="col-md-6 mb-4">
+			                  <div class="form-outline">
+			                    <input type="text" id="form3Example3" class="form-control" th:field="*{apellidoMadre}"/>
+			                    <label class="form-label" for="form3Example3">Apellido Materno</label>
+			                  </div>
+			                </div>
+			                
+			              </div>
+			              
+			              <!-- N° Celular input -->
+					      <div class="form-outline mb-4">
+					        <input type="number" id="registerNumber" class="form-control" th:field="*{telefono}"/>
+					        <label class="form-label" for="registerNumber">N° Celular</label>
+					      </div>
+					
+					      <!-- Direccion input -->
+					      <div class="form-outline mb-4">
+					        <input type="text" id="form3Example4" class="form-control" th:field="*{direccion}"/>
+					        <label class="form-label" for="form3Example4">Direccion</label>
+					      </div>
+					
+					      <!-- Correo input -->
+					      <div class="form-outline mb-4">
+					        <input type="email" id="registerEmail" class="form-control" th:field="*{correo}"/>
+					        <label class="form-label" for="registerEmail">Correo</label>
+					      </div>
+					
+					      <!-- Contraseña input -->
+					      <div class="form-outline mb-4">
+					        <input type="password" id="registerPassword" class="form-control" th:field="*{contrasena}"/>
+					        <label class="form-label" for="registerPassword">Contraseña</label>
+					      </div>
+					
+					      <!-- Submit button -->
+					      <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+					      
+					    </form>
+					  </div>
+					</div>
+					<!-- Pills content -->
+
+		          </div>
+		        </div>
+		      </div>
+
+			  <!-- imagen -->
+		      <div class="col-lg-6 mb-5 mb-lg-0">
+		        <img src="http://4.bp.blogspot.com/-epXlbQN4Go8/U3VwI5xRkjI/AAAAAAAAETg/XKcjZtVebdI/s1600/1.jpg" class="w-100 rounded-4 shadow-4" height="670"
+		          alt="" />
+		      </div>
+		      
+		      
+		    </div>
+		  </div>
+		</section>
+
+    </body>
+</html>

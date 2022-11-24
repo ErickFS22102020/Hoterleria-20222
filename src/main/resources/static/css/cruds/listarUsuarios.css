@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+body
+{
+	background-color: orange; 
+}
+#contenedorMantenimiento
+{
+	
+	position: relative;
+	top: 150px;
+}
+#contenedorListarUsuarios
+{
+	background-color: olive;
+	position: relative;
+	left:200px;
+	width: calc(100vw - 200px);
+}
+#tablaUsuarios
+{
+	background-color: white;
+}
+#tablaUsuarios td, #tablaUsuarios th
+{
+	padding: 10px;
+}

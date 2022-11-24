@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-mdb-backdrop="static" aria-hidden="true" th:fragment="formHabitaciones">
+		  <div class="modal-dialog modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">REGISTRAR HABITACION</h5>
+		        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form class="was-validated" th:action="@{/menu/mantenimiento/habitaciones/guardar}" th:object="${habitacion}" id="enviar" method="post" > 
+		          <div class="mb-3">
+		          	<input class="form-control" type="hidden" th:field="*{idHabitacion}"></input>
+		          	<input class="form-control" type="hidden" th:field="*{eliminado}"></input>
+		          	<label class="col-form-label" for="idPais">Tipo:</label>
+		            <select class="form-select" aria-label="Default select example" th:field="*{idTipoHabitacion}">
+                	  <option th:each="tipo : ${listaTipoHabitaciones}" th:value="${tipo.idTipoHabitacion}" th:text="${tipo.categoria}">
+                   	</select>
+		          </div>
+		          <div class="mb-3 form-group">
+		            <label class="col-form-label" for="numeroHabitacion">Numero:</label>
+		            <input class="form-control" type="number" max="9999" th:field="*{numeroHabitacion}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="piso">Piso:</label>
+		            <input class="form-control" type="number" th:field="*{piso}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="precio8Horas">Precio por 8 horas:</label>
+		            <input class="form-control" type="number" th:field="*{precio8Horas}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="precioDia">Precio por Dia:</label>
+		            <input class="form-control" type="number" th:field="*{precioDia}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="estado">Estado:</label>
+		            <select class="form-select" aria-label="Default select example" th:field="*{estado}">
+                	  <option th:value="DISPONIBLE" th:text="DISPONIBLE">
+                	  <option th:value="RESERVADO" th:text="RESERVADO">
+                	  <option th:value="OCUPADO" th:text="OCUPADO">
+                   	</select>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="descripcion">Descripcion:</label>
+		            <textarea class="form-control" rows="6" th:field="*{descripcion}" required></textarea>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+		        <button type="submit" class="btn btn-primary" form="enviar">Guardar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	</body>
+</html>

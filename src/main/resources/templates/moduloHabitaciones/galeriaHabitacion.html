@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="moduloMenu/plantilla :: head"></head>
+	<link rel="stylesheet" href="/css/cruds/galeriaHabitacion.css">	
+	<body>
+		
+		<nav th:replace="moduloMenu/plantilla :: menuNavegacion"></nav>
+		<div class="container-fluid">
+		
+			<div class="row titulo">
+				<div class="col-12 p-3" align="center"> Habitacion numero [[${numeroHabitacion}]] </div>
+			</div>
+			
+			<div class="row Centro">
+				<div class="col-12 col-sm-4 col-md-3 bg-info columnaIzquierda" align="center">
+					<form method="post" enctype="multipart/form-data" action="#" th:action="@{/menu/mantenimiento/habitaciones/guardarFoto}">
+
+				        <div>
+				            <label class="btn btn-primary m-3" for="image_uploads" id="btnAbrirImagen">Buscar Imagen (PNG, JPG)</label> <br>
+				            <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple />
+				        </div>
+
+				        <div class="vistaFoto">
+				            <p>Ninguna imagen seleccionada</p>
+				        </div>
+
+				        <div>
+				            <button class="btn btn-danger m-3" type="reset" onclick="resetearImagen()" id="btnEliminar">Eliminar</button>
+				            <button class="btn btn-success m-3" type="submit" id="btnAgregar">Agregar</button>
+				        </div>
+				        
+				        <input type="hidden" name="recuadroIdHabitacion" th:value="${idHabitacion}">
+				        <input type="hidden" name="imagenBase64" id="imagenCodificada" >
+				    </form>
+				</div>
+				
+				<div class="col-12 col-sm-8 col-md-9 bg-secondary p-3 columnaDerecha" align="center"> 
+					Galeria del interior
+					<div class="row Imagenes">
+						<div th:each="foto : ${listaFotos}" class="col-12 col-md-6 col-lg-4 col-xxl-3">
+							<img th:src="${ 'data:image/jpeg;base64,' + foto}" id="imagenGaleria">
+		        		</div>
+	        		</div>
+				</div>
+				
+			</div>
+			
+	    </div>
+	    <script src="/js/cruds/galeriaHabitacion.js"></script>
+	</body>
+</html>

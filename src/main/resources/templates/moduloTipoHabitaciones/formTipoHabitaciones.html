@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-mdb-backdrop="static" aria-hidden="true" th:fragment="formTipoHabitaciones">
+		  <div class="modal-dialog modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">REGISTRAR TIPO HABITACION</h5>
+		        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form class="was-validated" th:action="@{/menu/mantenimiento/tipoHabitaciones/guardar}" th:object="${tipoHabitacion}" id="enviar" method="post" > 
+		          <div class="mb-3">
+		          	<input class="form-control" type="hidden" th:field="*{idTipoHabitacion}"></input>
+		          	<input class="form-control" type="hidden" th:field="*{eliminado}"></input>
+		            <label class="col-form-label" for="categoria">Categoria:</label>
+		            <input class="form-control" type="text" th:field="*{categoria}" required></input>
+		            <label class="col-form-label" for="camas">Camas:</label>
+		            <input class="form-control" type="text" th:field="*{camas}" required></input>
+		          </div>
+		          <div class="mb-3 row mx-1">
+		            <label class="col-form-label col-sm-2 col-3 py-0" for="jacuzzi">Jacuzzi:</label>
+		            <input class="form-check-inline col-sm-2 col-3 m-0 my-2" type="checkbox" th:value="SI" th:field="*{jacuzzi}" ></input>
+		          	<label class="col-form-label col-sm-2 col-3 py-0" for="netflix">Netflix:</label>
+		            <input class="form-check-inline col-sm-2 col-3 m-0 my-2" type="checkbox" th:value="SI" th:field="*{netflix}" ></input>
+		            <label class="col-form-label col-sm-2 col-3 py-0" for="internet">Internet:</label>
+		            <input class="form-check-inline col-sm-2 col-3 m-0 my-2" type="checkbox" th:value="SI" th:field="*{internet}" ></input>
+		          	<label class="col-form-label col-sm-2 col-3 py-0" for="exterior">Exterior:</label>
+		            <input class="form-check-inline col-sm-2 col-3 m-0 my-2" type="checkbox" th:value="SI" th:field="*{exterior}" ></input>
+		            <label class="col-form-label col-sm-2 col-3 py-0" for="salon">Salon:</label>
+		            <input class="form-check-inline col-sm-2 col-3 m-0 my-2" type="checkbox" th:value="SI" th:field="*{salon}" ></input>
+		            <label class="col-form-label col-sm-2 col-3 py-0" for="terraza">Terraza:</label>
+		            <input class="form-check-inline col-sm-2 col-3 m-0 my-2" type="checkbox" th:value="SI" th:field="*{terraza}" ></input>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+		        <button type="submit" class="btn btn-primary" form="enviar">Guardar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	</body>
+</html>

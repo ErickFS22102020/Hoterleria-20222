@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-mdb-backdrop="static" aria-hidden="true" th:fragment="formRoles">
+		  <div class="modal-dialog modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">AGREGAR ROL</h5>
+		        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form class="was-validated" th:action="@{/menu/mantenimiento/roles/guardar}" th:object="${rol}" id="enviar" method="post" > 
+		          <div class="mb-3">
+		          	<input class="form-control" type="hidden" th:field="*{idRol}"></input>
+		          	<label class="col-form-label" for="idPais">Seleccionar Usuario:</label>
+		            <select class="form-select" aria-label="Default select example" th:field="*{idUsuario}">
+                	  <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.idUsuario}" th:text="${usuario.correo}">
+                   	</select>
+		          </div>
+		          <div class="mb-3 form-group">
+		            <label class="col-form-label" for="nombre">Seleccionar Rol:</label>
+		            <select class="form-select" aria-label="Default select example" th:field="*{nombreRol}">
+                	  <option value="CLIENTE"> CLIENTE </option>
+                	  <option value="EMPLEADO"> EMPLEADO </option>
+                	  <option value="ADMINISTRADOR"> ADMINISTRADOR </option>
+                   	</select>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+		        <button type="submit" class="btn btn-primary" form="enviar">Guardar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	</body>
+</html>

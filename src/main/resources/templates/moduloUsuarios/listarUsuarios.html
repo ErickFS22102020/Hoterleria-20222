@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+		<nav th:replace="plantilla :: menuNavegacion"></nav>
+		<div th:replace="moduloUsuarios/tablaUsuarios :: tablaUsuarios"></div>
+		<div th:replace="moduloUsuarios/formUsuarios :: formUsuarios"></div>
+		<script src="/js/cruds/listarUsuarios.js"></script>
+	</body>
+</html>

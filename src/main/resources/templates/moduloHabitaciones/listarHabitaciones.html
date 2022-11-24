@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+		<nav th:replace="plantilla :: menuNavegacion"></nav>
+		<div th:replace="moduloHabitaciones/tablaHabitaciones :: tablaHabitaciones"></div>
+		<div th:replace="moduloHabitaciones/formHabitaciones :: formHabitaciones"></div>
+		<script src="/js/cruds/listarHabitaciones.js"></script>
+	</body>
+</html>

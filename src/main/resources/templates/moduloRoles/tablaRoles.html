@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+
+		<div class="container" th:fragment="tablaRoles">
+		  <br>
+		  <div class="row">
+		    <div class="col-md-9 mb-3">
+		      <div class="card border-0">
+		        <div class="card-header text-center py-4">
+		        	<div class="row">
+					  <div class="col-md-8 text-start">
+				  		<h3> Roles </h3>
+					  </div>
+					  <div class="col-md-4 text-end">
+					  	<button class="btn btn-primary btn-agregar" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+						  AGREGAR
+						</button>
+					  </div>
+					</div>
+		        </div>
+		        
+					<table border="1" id="ejemplo1" class="table align-middle mb-0 bg-white table-hover table-borderless border-0 dt-responsive nowrap" style="width: 100%">
+			        <thead class="table-secondary">
+		        	  <tr>
+		        		<th>ID</th>
+	        			<th>USUARIO</th>
+	        			<th>CORREO</th>
+	        			<th>ROL</th>
+	        			<th>ACCIONES</th>
+		        	  </tr>
+			        </thead>
+			        <tbody>
+	        		  <tr th:each="rol : ${listaRoles}">
+	        			<td th:text="${rol.idRol}"></td>
+	        			<td th:text="${rol.idUsuario.nombre}"></td>
+	        			<td th:text="${rol.idUsuario.correo}"></td>
+	        			<td th:text="${rol.nombreRol}"></td>
+	        			<td>
+	        			  <button type="button" class="btn btn-warning btn-actualizar" data-mdb-toggle="modal" data-mdb-target="#exampleModal"
+	        			  		  th:data-idRol="${rol.idRol}"
+	        			  		  th:data-nombreRol="${rol.nombreRol}"
+                                  th:data-idUsuario="${rol.idUsuario.idUsuario}">
+	        			  	<i class="fa-solid fa-pen-to-square"></i>
+	        			  </button>
+                       		&nbsp;&nbsp;&nbsp;
+                       	  <a th:href="@{/menu/mantenimiento/roles/eliminar{id}(id=${rol.idRol})}" type="button" class="btn btn-danger btn-eliminar">
+                       	  	<i class="fa-solid fa-trash"></i>
+                       	  </a>
+                   		</td>
+			          </tr>
+			        </tbody>
+			      </table>
+			      
+		      </div>
+		    </div>
+		    <div class="col-md-3">
+		      <div class="card text-center bg-danger text-white mb-3">
+		        <div class="card-body">
+		          	<h3> CLIENTES </h3>
+		          	<h4> 
+		          		<i class="fa-solid fa-user-ninja"></i>
+		          		[[${clientes}]] 
+		          	</h4>
+		        </div>
+		      </div>
+		      <div class="card text-center bg-success text-white mb-3">
+		        <div class="card-body">
+		          	<h3> EMPLEADOS </h3>
+		          	<h4> 
+		          		<i class="fas fa-users"></i>
+		          		[[${empleados}]] 
+		          	</h4>
+		        </div>
+		      </div>
+		      <div class="card text-center bg-secondary text-white mb-3">
+		        <div class="card-body">
+		          	<h3> ADMINS </h3>
+		          	<h4> 
+		          		<i class="fa-solid fa-users-slash"></i>
+		          		[[${administradores}]] 
+		          	</h4>
+		        </div>
+		      </div>
+		    </div> 
+		       
+		  </div>
+		</div>
+	</body>
+</html>

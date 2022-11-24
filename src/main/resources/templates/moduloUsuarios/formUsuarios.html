@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="plantilla :: head"></head>
+	<body>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-mdb-backdrop="static" aria-hidden="true" th:fragment="formUsuarios">
+		  <div class="modal-dialog modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">REGISTRAR USUARIO</h5>
+		        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <form class="was-validated" th:action="@{/menu/mantenimiento/usuarios/guardar}" th:object="${usuario}" id="enviar" method="post" > 
+		          <div class="mb-3">
+		          	<input class="form-control" type="hidden" th:field="*{idUsuario}"></input>
+		          	<input class="form-control" type="hidden" th:field="*{eliminado}"></input>
+		          	<label class="col-form-label" for="idPais">Pais:</label>
+		            <select class="form-select" aria-label="Default select example" th:field="*{idPais}">
+                	  <option th:each="pais : ${listaPaises}" th:value="${pais.idPais}" th:text="${pais.nombrePais}">
+                   	</select>
+		          </div>
+		          <div class="mb-3 form-group">
+		            <label class="col-form-label" for="nombre">Nombre:</label>
+		            <input class="form-control" type="text" th:field="*{nombre}" required />
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="apellidoPadre">Apellido Paterno:</label>
+		            <input class="form-control" type="text" th:field="*{apellidoPadre}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="apellidoMadre">Apellido Materno:</label>
+		            <input class="form-control" type="text" th:field="*{apellidoMadre}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="direccion">Direccion:</label>
+		            <input class="form-control" type="text" th:field="*{direccion}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="telefono">Telefono:</label>
+		            <input class="form-control" type="number" th:field="*{telefono}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="correo">Correo:</label>
+		            <input class="form-control" type="email" th:field="*{correo}" required></input>
+		          </div>
+		          <div class="mb-3">
+		            <label class="col-form-label" for="contrasena">Contraseña:</label>
+		            <input class="form-control" type="password" th:field="*{contrasena}" required></input>
+		          </div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cerrar</button>
+		        <button type="submit" class="btn btn-primary" form="enviar">Guardar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	</body>
+</html>
