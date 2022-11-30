@@ -50,6 +50,15 @@ public class PrincipalController {
 	{
 		usuario.setContrasena(General.encriptarPassword(usuario.getContrasena()));
 		
+		servicioUsuario.registrarCliente(usuario.getIdPais().getIdPais(), 
+										 usuario.getNombre(), 
+										 usuario.getApellidoPadre(), 
+										 usuario.getApellidoMadre(), 
+										 usuario.getTelefono(), 
+										 usuario.getDireccion(), 
+										 usuario.getCorreo(), 
+										 usuario.getContrasena());
+		
 		Usuario nuevoUsuario = servicioUsuario.encontrarUsuarioPorCorreo(usuario.getCorreo());
 		
 		var roles = new ArrayList<GrantedAuthority>();

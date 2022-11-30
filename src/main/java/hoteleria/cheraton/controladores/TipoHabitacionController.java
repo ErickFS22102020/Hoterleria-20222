@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hoteleria.cheraton.modelos.TipoHabitacion;
 import hoteleria.cheraton.servicios.TipoHabitacionServicioNombres;
@@ -57,5 +58,12 @@ public class TipoHabitacionController {
 	{
 		servicioTipoHabitacion.eliminacionLogicaTipoHabitacion(tipoHabitacion.getIdTipoHabitacion());
 		return "redirect:/menu/mantenimiento/tipoHabitaciones/listar";
+	}
+	
+	@GetMapping("/JSON")
+	@ResponseBody
+	public List<TipoHabitacion> listarUsuariosJSON()
+	{
+		return servicioTipoHabitacion.retornarListaTipoHabitaciones();
 	}
 }

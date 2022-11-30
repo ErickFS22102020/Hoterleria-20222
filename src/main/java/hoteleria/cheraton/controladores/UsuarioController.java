@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hoteleria.cheraton.metodos.General;
 import hoteleria.cheraton.modelos.Pais;
 import hoteleria.cheraton.modelos.Usuario;
 import hoteleria.cheraton.servicios.PaisServicioNombres;
@@ -42,7 +42,7 @@ public class UsuarioController {
 			if(i.getEliminado().equals("1")) totalEliminados += 1;
 			else 
 			{
-				if(i.getIdPais().getNombrePais().equals("Peru")) totalPeruanos += 1;
+				if(i.getIdPais().getNombrePais().equals("Perú")) totalPeruanos += 1;
 				listaUsuarios.add(i);
 			}
 		}
@@ -58,8 +58,19 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/guardar")
-	public String registrar(@ModelAttribute Usuario usuario)
+	public String registrar(Usuario usuario)
 	{	
+		System.out.println("-------------------------------");
+		System.out.println(usuario.getIdUsuario());
+		System.out.println("-------------------------------");
+		
+		
+		if(! usuario.getIdUsuario().equals(""))
+		{
+			String antiguoPassword = servicioUsuario.encontrarUsuarioPorId(usuario.getIdUsuario()).getContrasena();
+			if(! usuario.getContrasena().equals(antiguoPassword)) usuario.setContrasena(General.encriptarPassword(usuario.getContrasena()));
+		}
+		else usuario.setContrasena(General.encriptarPassword(usuario.getContrasena()));
 		servicioUsuario.guardarUsuario(usuario);
 		return "redirect:/menu/mantenimiento/usuarios/listar";
 	}

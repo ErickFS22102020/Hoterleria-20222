@@ -10,5 +10,5 @@ public interface HabitacionServicioNombres{
 	public void guardarHabitacion(Habitacion habitacion);
 	public void eliminarHabitacion(Habitacion habitacion);
 	public void eliminacionLogicaHabitacion(String idHabitacion);
-	public Habitacion encontrarHabitacion(Habitacion habitacion);
+	public Habitacion encontrarHabitacionPorId(String idHabitacion);
 }

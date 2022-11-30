@@ -43,13 +43,13 @@
 	                        <a class="nav-link" href="http://localhost:2022/menu/inicio">Inicio</a>
 	                    </li>
 	                    <li class="nav-item dropdown">
-	                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Mantenimiento </a>
+	                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" sec:authorize="hasAnyRole('ROLE_ADMINISTRADOR','ROLE_EMPLEADO')"> Mantenimiento </a>
 	                        <ul class="dropdown-menu">
-	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/usuarios/listar">Usuarios</a></li>
-	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/habitaciones/listar">Habitaciones</a></li>
-	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/tipoHabitaciones/listar">Tipo Habitacion</a></li>
-	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/paises/listar">Paises</a></li>
-	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/roles/listar">Roles</a></li>
+	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/usuarios/listar" sec:authorize="hasAnyRole('ROLE_ADMINISTRADOR')">Usuarios</a></li>
+	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/habitaciones/listar" sec:authorize="hasAnyRole('ROLE_EMPLEADO')">Habitaciones</a></li>
+	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/tipoHabitaciones/listar" sec:authorize="hasAnyRole('ROLE_EMPLEADO')">Tipo Habitacion</a></li>
+	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/paises/listar" sec:authorize="hasAnyRole('ROLE_EMPLEADO')">Paises</a></li>
+	                          <li><a class="dropdown-item" href="http://localhost:2022/menu/mantenimiento/roles/listar" sec:authorize="hasAnyRole('ROLE_ADMINISTRADOR')">Roles</a></li>
 	                          <li><a class="dropdown-item" href="#">Reservaciones</a></li>
 	                          <li><hr class="dropdown-divider"></li>
 	                          <li><a class="dropdown-item" href="#">Servicios</a></li>

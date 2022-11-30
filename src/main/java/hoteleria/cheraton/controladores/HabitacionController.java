@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hoteleria.cheraton.modelos.Habitacion;
 import hoteleria.cheraton.modelos.TipoHabitacion;
@@ -63,5 +64,12 @@ public class HabitacionController {
 	{
 		servicioHabitacion.eliminacionLogicaHabitacion(habitacion.getIdHabitacion());
 		return "redirect:/menu/mantenimiento/habitaciones/listar";
+	}
+	
+	@GetMapping("/JSON")
+	@ResponseBody
+	public List<Habitacion> listarUsuariosJSON()
+	{
+		return servicioHabitacion.retonarListaHabitaciones();
 	}
 }

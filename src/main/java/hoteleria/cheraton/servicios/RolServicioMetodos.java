@@ -29,7 +29,7 @@ public class RolServicioMetodos implements RolServicioNombres{
 		List<Rol> roles = new ArrayList<Rol>();
 		for(Rol rol : rolRepositorio.findAll())
 		{
-			if(rol.getIdUsuario().equals(idUsuario)) roles.add(rol);
+			if(rol.getIdUsuario().getIdUsuario().equals(idUsuario)) roles.add(rol);
 		}
 		if(roles.size() < 1) return null;
 		return roles;
@@ -44,8 +44,8 @@ public class RolServicioMetodos implements RolServicioNombres{
 
 	@Override
 	@Transactional
-	public void eliminarRol(Rol rol) {
-		rolRepositorio.delete(rol);
+	public void eliminarRol(String idRol) {
+		rolRepositorio.deleteById(idRol);
 	}
 	
 }

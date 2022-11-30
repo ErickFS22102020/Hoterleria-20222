@@ -16,16 +16,14 @@
 		          <div class="mb-3">
 		          	<input class="form-control" type="hidden" th:field="*{idRol}"></input>
 		          	<label class="col-form-label" for="idPais">Seleccionar Usuario:</label>
-		            <select class="form-select" aria-label="Default select example" th:field="*{idUsuario}">
-                	  <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.idUsuario}" th:text="${usuario.correo}">
+		            <select class="form-select" aria-label="Default select example" onchange="establecerRoles(this);" th:field="*{idUsuario}">
+                	  <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.idUsuario}" th:data-roles='${servicioUsuario.encontrarUsuarioPorId(usuario.idUsuario).mostrarRoles()}' th:text="${usuario.correo}" >
                    	</select>
 		          </div>
 		          <div class="mb-3 form-group">
 		            <label class="col-form-label" for="nombre">Seleccionar Rol:</label>
 		            <select class="form-select" aria-label="Default select example" th:field="*{nombreRol}">
-                	  <option value="CLIENTE"> CLIENTE </option>
-                	  <option value="EMPLEADO"> EMPLEADO </option>
-                	  <option value="ADMINISTRADOR"> ADMINISTRADOR </option>
+                	  <option value="ejemplo"> ejemplo </option>
                    	</select>
 		          </div>
 		        </form>

@@ -47,8 +47,8 @@ public class HabitacionServicioMetodos implements HabitacionServicioNombres{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public Habitacion encontrarHabitacion(Habitacion habitacion) {
-		return habitacionRepositorio.findById(habitacion.getIdHabitacion()).orElse(null);
+	public Habitacion encontrarHabitacionPorId(String idHabitacion) {
+		return habitacionRepositorio.findById(idHabitacion).orElse(null);
 	}
 
 }

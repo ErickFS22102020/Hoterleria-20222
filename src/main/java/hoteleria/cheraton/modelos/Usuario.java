@@ -2,9 +2,12 @@ package hoteleria.cheraton.modelos;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.apache.tomcat.util.buf.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -56,4 +59,11 @@ public class Usuario implements Serializable{
 	@OneToMany(mappedBy = "idUsuario")
 	@JsonBackReference(value="listaReservaciones")
 	private List<Reservacion> listaReservaciones;
+	
+	public String mostrarRoles() 
+	{
+		List<String> lista = new ArrayList<String>();
+		for(Rol i : this.listaRoles) lista.add(i.getNombreRol()); 
+		return StringUtils.join(lista,',');
+	}
 }

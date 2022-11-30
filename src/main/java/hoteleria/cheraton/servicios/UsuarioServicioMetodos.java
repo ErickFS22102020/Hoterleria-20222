@@ -57,8 +57,8 @@ public class UsuarioServicioMetodos implements UsuarioServicioNombres,UserDetail
 
 	@Override
 	@Transactional(readOnly = true)
-	public Usuario encontrarUsuario(Usuario usuario) {
-		return usuarioRepositorio.findById(usuario.getIdUsuario()).orElse(null);
+	public Usuario encontrarUsuarioPorId(String idUsuario) {
+		return usuarioRepositorio.findById(idUsuario).orElse(null);
 		
 	}
 

@@ -15,7 +15,7 @@
 				  		<h3> Roles </h3>
 					  </div>
 					  <div class="col-md-4 text-end">
-					  	<button class="btn btn-primary btn-agregar" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+					  	<button class="btn btn-primary btn-agregar" data-mdb-toggle="modal" data-mdb-target="#exampleModal" th:if="${listaUsuarios.size() > 0}">
 						  AGREGAR
 						</button>
 					  </div>
@@ -39,12 +39,6 @@
 	        			<td th:text="${rol.idUsuario.correo}"></td>
 	        			<td th:text="${rol.nombreRol}"></td>
 	        			<td>
-	        			  <button type="button" class="btn btn-warning btn-actualizar" data-mdb-toggle="modal" data-mdb-target="#exampleModal"
-	        			  		  th:data-idRol="${rol.idRol}"
-	        			  		  th:data-nombreRol="${rol.nombreRol}"
-                                  th:data-idUsuario="${rol.idUsuario.idUsuario}">
-	        			  	<i class="fa-solid fa-pen-to-square"></i>
-	        			  </button>
                        		&nbsp;&nbsp;&nbsp;
                        	  <a th:href="@{/menu/mantenimiento/roles/eliminar{id}(id=${rol.idRol})}" type="button" class="btn btn-danger btn-eliminar">
                        	  	<i class="fa-solid fa-trash"></i>
@@ -57,7 +51,7 @@
 		      </div>
 		    </div>
 		    <div class="col-md-3">
-		      <div class="card text-center bg-danger text-white mb-3">
+		      <div class="card text-center bg-success text-white mb-3">
 		        <div class="card-body">
 		          	<h3> CLIENTES </h3>
 		          	<h4> 
@@ -66,7 +60,7 @@
 		          	</h4>
 		        </div>
 		      </div>
-		      <div class="card text-center bg-success text-white mb-3">
+		      <div class="card text-center bg-warning text-white mb-3">
 		        <div class="card-body">
 		          	<h3> EMPLEADOS </h3>
 		          	<h4> 

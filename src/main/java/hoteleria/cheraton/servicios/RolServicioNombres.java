@@ -9,5 +9,5 @@ public interface RolServicioNombres {
 	public List<Rol> retornarListaRoles();
 	public List<Rol> retornarRolesPorIdUsuario(String idUsuario);
 	public void guardarRol(Rol rol);
-	public void eliminarRol(Rol rol);
+	public void eliminarRol(String idRol);
 }

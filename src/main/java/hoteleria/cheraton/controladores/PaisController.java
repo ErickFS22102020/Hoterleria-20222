@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hoteleria.cheraton.modelos.Pais;
 import hoteleria.cheraton.servicios.PaisServicioNombres;
@@ -55,5 +56,12 @@ public class PaisController {
 	{
 		servicioPais.eliminacionLogicaPais(pais.getIdPais());
 		return "redirect:/menu/mantenimiento/paises/listar";
+	}
+	
+	@GetMapping("/JSON")
+	@ResponseBody
+	public List<Pais> listarUsuariosJSON()
+	{
+		return servicioPais.retornarListaPaises();
 	}
 }

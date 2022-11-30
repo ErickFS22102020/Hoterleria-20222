@@ -1,5 +1,6 @@
 package hoteleria.cheraton.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hoteleria.cheraton.modelos.Rol;
 import hoteleria.cheraton.modelos.Usuario;
@@ -28,7 +30,10 @@ public class RolController {
 	public String listar(Model modelo, Rol rol)
 	{
 		List<Rol> listaRoles = servicioRol.retornarListaRoles();
-		List<Usuario> listaUsuarios = servicioUsuario.retornarListaUsuarios();
+		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		
+		for (Usuario i : servicioUsuario.retornarListaUsuarios()) if(i.getListaRoles().size() < 3) listaUsuarios.add(i);
+		
 		
 		int clientes = 0;
 		int empleados = 0;
@@ -40,7 +45,8 @@ public class RolController {
 			if (i.getNombreRol().equals("EMPLEADO")) empleados += 1; 
 			if (i.getNombreRol().equals("ADMINISTRADOR")) administradores += 1; 
 		}
-		
+
+		modelo.addAttribute("servicioUsuario",this.servicioUsuario);
 		modelo.addAttribute("listaRoles",listaRoles);
 		modelo.addAttribute("listaUsuarios",listaUsuarios);
 		modelo.addAttribute("clientes",clientes);
@@ -60,7 +66,14 @@ public class RolController {
 	@GetMapping("/eliminar{idRol}")
 	public String eliminar(Rol rol)
 	{
-		servicioRol.eliminarRol(rol);
+		servicioRol.eliminarRol(rol.getIdRol());
 		return "redirect:/menu/mantenimiento/roles/listar";
+	}
+	
+	@GetMapping("/JSON")
+	@ResponseBody
+	public List<Rol> listarUsuariosJSON()
+	{
+		return servicioRol.retornarListaRoles();
 	}
 }
